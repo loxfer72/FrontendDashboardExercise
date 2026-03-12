@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-brand-purple: #7C3AED;
+  --color-brand-blue:   #2563EB;
+  --color-brand-pink:   #EC4899;
+  --color-brand-green:  #10B981;
+  --color-brand-orange: #F59E0B;
+  --color-brand-red:    #EF4444;
+
+  /* UI tokens — light par défaut */
+  --color-ui-bg:     #F8FAFC;
+  --color-ui-card:   #FFFFFF;
+  --color-ui-border: #E2E8F0;
+  --color-ui-text:   #0F172A;
+  --color-ui-muted:  #64748B;
+
+  /* Animations */
+  --animate-fade-in:  fadeIn 0.3s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Dark mode — overrides les CSS variables quand html.dark est présent */
+.dark {
+  --color-ui-bg:     #0A0A0A;
+  --color-ui-card:   #080808;
+  --color-ui-border: #1F1F1F;
+  --color-ui-text:   #E5E5E5;
+  --color-ui-muted:  #6B7280;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--color-ui-bg);
+    color: var(--color-ui-text);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #7C3AED40; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #7C3AED80; }
+}
